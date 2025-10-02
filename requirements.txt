@@ -1,0 +1,7 @@
+bedrock-agentcore
+strands-agents
+pandas
+matplotlib
+reportlab
+seaborn
+numpy

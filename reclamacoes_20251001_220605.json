@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "total_reclamacoes": 20,
+    "data_extracao": "2025-10-02T00:15:00.000000",
+    "fonte": "Reclame Aqui - Sicredi"
+  },
+  "reclamacoes": [
+    {
+      "data": "2025-09-30",
+      "titulo": "PIX não funciona no app",
+      "descricao": "Tentei fazer uma transferência via PIX pelo aplicativo mas sempre dá erro. Já tentei várias vezes e não consegui resolver.",
+      "status": "Não respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-29",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "Meu cartão foi bloqueado do nada e não recebi nenhuma comunicação. Fui fazer uma compra e não passou.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-27",
+      "titulo": "App muito lento para abrir",
+      "descricao": "O aplicativo do banco está muito lento, demora muito para carregar e às vezes trava.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-26",
+      "titulo": "Cobrança indevida na conta",
+      "descricao": "Apareceu uma cobrança na minha conta que eu não reconheço. Preciso de esclarecimentos urgente.",
+      "status": "Resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Dificuldade para alterar limite do cartão",
+      "descricao": "Tentei aumentar o limite do meu cartão no aplicativo mas sempre aparece erro de sistema.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Fila de atendimento enorme",
+      "descricao": "Precisei resolver um problema presencialmente e fiquei mais de 2 horas na fila da agência.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Dificuldade para acessar internet banking",
+      "descricao": "Toda vez que tento acessar o internet banking, pede várias autenticações e não entra.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-23",
+      "titulo": "Empréstimo descontado sem autorização",
+      "descricao": "Foi debitado um valor de empréstimo que eu nunca solicitei na minha conta.",
+      "status": "Resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-23",
+      "titulo": "PIX agendado não foi realizado",
+      "descricao": "Agendei um PIX para pagamento e o valor não foi transferido na data correta.",
+      "status": "Não respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Problemas com cartão virtual",
+      "descricao": "Criei um cartão virtual para compras online, mas não funciona em nenhum site.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-21",
+      "titulo": "Aplicativo não envia SMS de confirmação",
+      "descricao": "Sempre que tento confirmar operações pelo app não recebo o SMS de autenticação.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-21",
+      "titulo": "Conta bloqueada sem motivo",
+      "descricao": "Minha conta foi bloqueada e não consigo movimentar dinheiro. Não recebi explicações.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-20",
+      "titulo": "Erro na fatura do cartão",
+      "descricao": "Minha fatura veio com cobrança duplicada em uma compra que já havia sido paga.",
+      "status": "Resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-19",
+      "titulo": "Agência sem dinheiro no caixa eletrônico",
+      "descricao": "Fui sacar em uma agência e todos os caixas estavam sem dinheiro.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-19",
+      "titulo": "Problema no débito automático",
+      "descricao": "Cadastrei minhas contas no débito automático e elas não foram pagas.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-18",
+      "titulo": "Atendimento no chat não resolve nada",
+      "descricao": "O chat de atendimento só passa respostas prontas e não soluciona os problemas.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-18",
+      "titulo": "Transferência TED não realizada",
+      "descricao": "Fiz uma TED para outro banco e o valor demorou mais de 2 dias para cair.",
+      "status": "Resolvido",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-17",
+      "titulo": "Aplicativo fecha sozinho",
+      "descricao": "Toda vez que tento abrir o app ele fecha automaticamente e não consigo acessar.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Cobrança de tarifa indevida",
+      "descricao": "Foi debitada uma tarifa de manutenção que não estava prevista no contrato.",
+      "status": "Respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "PIX não reconhecido pelo recebedor",
+      "descricao": "Realizei um PIX mas o beneficiário não recebeu o valor, mesmo constando como enviado.",
+      "status": "Não respondida",
+      "categoria": "PIX"
+    }
+  ]
+}
