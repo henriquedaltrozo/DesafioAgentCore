@@ -1,7 +1,9 @@
 bedrock-agentcore
-strands-agents
+boto3
+botocore
 pandas
 matplotlib
 reportlab
 seaborn
 numpy
+python-dotenv
