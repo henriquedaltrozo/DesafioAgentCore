@@ -1,29 +1,40 @@
-# 🏦 Sistema de Análise de Reclamações
+# 🤖 Agente de IA - Análise de Reclamações Sicredi
 
-### **Execução Principal** (Arquivo único)
+## 🚀 **NOVO: Agente de IA Conversacional**
 ```bash
+# Chat interativo com IA
+python ai_chat_demo.py
+
+# Servidor Bedrock IA
+python bedrock_ai_server.py
+
+# Análise rápida (modo clássico)
 python my_agent.py
+python my_agent.py destinatario@email.com
 ```
 
-Este é o **único comando necessário** para:
-- ✅ Carregar e analisar os dados JSON
-- ✅ Gerar insights com IA integrada
-- ✅ Criar relatório PDF completo
-- ✅ Mostrar resumo na tela
-- ✅ Salvar resumo executivo
+### 🧠 **Capacidades da IA:**
+- ✅ **Conversação natural** sobre dados
+- ✅ **Insights inteligentes** com Claude 3 Sonnet
+- ✅ **Recomendações estratégicas** personalizadas
+- ✅ **Análise automática** quando solicitada
+- ✅ **Integração Bedrock AgentCore** completa
+- ✅ **API REST** para aplicações
 
 ## 🛠️ Funcionalidades Principais Ações
 
-Sistema desenvolvido com **Amazon Bedrock AgentCore** para análise inteligente de reclamações do Reclame Aqui, geração de insights e relatórios em PDF.
+**Agente de IA conversacional** desenvolvido com **Amazon Bedrock AgentCore** e **Claude 3 Sonnet** para análise inteligente de reclamações, conversação natural sobre dados e geração de insights estratégicos.
 
-## 🚀 Funcionalidades
+## 🤖 Funcionalidades de IA
 
-- ✅ **Análise automática** de dados JSON de reclamações
-- ✅ **Insights inteligentes** com IA (Amazon Bedrock + Strands Agents)  
-- ✅ **Relatórios em PDF** com gráficos e visualizações
-- ✅ **Resumos executivos** em texto
-- ✅ **Recomendações estratégicas** personalizadas
-- ✅ **Integração completa** com Bedrock AgentCore
+- ✅ **Chat conversacional** com dados de reclamações
+- ✅ **IA generativa** (Claude 3 Sonnet) para insights
+- ✅ **Análise automática** quando solicitada
+- ✅ **Relatórios PDF** com insights de IA
+- ✅ **Recomendações dinâmicas** personalizadas
+- ✅ **API Bedrock** para integração
+- ✅ **Servidor IA** para aplicações
+- ✅ **Envio automático por e-mail** 📧
 
 ## 📊 Principais Métricas Analisadas
 
@@ -76,6 +87,8 @@ Sistema desenvolvido com **Amazon Bedrock AgentCore** para análise inteligente 
 
 ### Pré-requisitos
 - Python 3.13+
+- **AWS CLI configurado** (credenciais)
+- **Amazon Bedrock** com Claude habilitado
 - Amazon Bedrock AgentCore SDK
 - Dependências listadas em `requirements.txt`
 
@@ -85,22 +98,45 @@ Sistema desenvolvido com **Amazon Bedrock AgentCore** para análise inteligente 
 ```bash
 pip install -r requirements.txt
 ```
+3. Configure as credenciais de e-mail (opcional):
+```bash
+cp .env.example .env
+# Edite o arquivo .env com suas credenciais
+```
 
-### Executar Análise
+### 🤖 **Usar Agente de IA (Recomendado)**
 
-# Usar como agente Bedrock
+```bash
+# Chat interativo com IA
+python ai_chat_demo.py
+
+# Servidor Bedrock para aplicações
+python bedrock_ai_server.py
+```
+
+### 📊 **Análise Rápida (Clássico)**
+
+```bash
+# Análise básica
 python my_agent.py
+
+# Análise com envio de e-mail
+python my_agent.py destinatario@email.com
 ```
 
 ## 📁 Estrutura do Projeto
 
 ```
-├── my_agent.py                    # Agente principal do Bedrock
-├── reclamacoes_analyzer.py        # Motor de análise de dados
-├── reclamacoes_20251001_220605.json # Dados de entrada
-├── requirements.txt               # Dependências Python
-├── Dockerfile                     # Container Docker
-└── .bedrock_agentcore.yaml        # Configuração Bedrock
+├── my_agent.py                    # 🤖 Agente IA principal
+├── ai_chat_demo.py                # 💬 Demo chat conversacional
+├── bedrock_ai_server.py           # 🚀 Servidor Bedrock IA
+├── reclamacoes_analyzer.py        # 📊 Motor de análise
+├── email_sender.py                # 📧 Envio de e-mail
+├── GUIA_AGENTE_IA.md              # 📖 Guia do agente IA
+├── reclamacoes_20251001_220605.json # 📄 Dados de entrada
+├── requirements.txt               # 📦 Dependências (+ boto3)
+├── .bedrock_agentcore.yaml        # ⚙️ Configuração Bedrock
+└── README.md                      # 📚 Este arquivo
 ```
 
 ## 🔧 Arquivos Principais
@@ -115,12 +151,19 @@ Classe principal com métodos para:
 - Geração de gráficos
 - Criação de relatórios PDF
 
+### `email_sender.py`
+Módulo para envio de e-mail com:
+- Configuração SMTP
+- Anexo de arquivos PDF
+- Corpo do e-mail personalizado
+- Suporte a credenciais seguras
+
 ## 📈 Saídas do Sistema
 
 ### Arquivos Gerados
-- **PDF**: `relatorio_sicredi_YYYYMMDD_HHMMSS.pdf`
-- **TXT**: `resumo_sicredi_YYYYMMDD_HHMMSS.txt`
+- **PDF**: `relatorio_reclamacoes_YYYYMMDD_HHMMSS.pdf`
 - **Gráficos**: Integrados no PDF (categorias, status, timeline)
+- **E-mail**: Enviado automaticamente com PDF anexo 📧
 
 ### Estrutura do Relatório PDF
 1. Resumo executivo
@@ -129,18 +172,21 @@ Classe principal com métodos para:
 4. Análise temporal
 5. Insights estratégicos
 
-## 🎯 Insights de Negócio
+## 🧠 Exemplos de IA Conversacional
 
-### Problemas Identificados
-- **Alta taxa de não resolução**: 65% das reclamações estão pendentes
-- **Problemas recorrentes**: Cartão e App são as categorias mais citadas
-- **Tempo de resposta**: 35% das reclamações ainda não foram respondidas
+### **Perguntas que a IA responde:**
+- *"Qual a situação atual das reclamações?"*
+- *"Por que temos tantos problemas com cartão?"*
+- *"Como posso melhorar o atendimento?"*
+- *"Que ações você recomenda para o PIX?"*
+- *"Analisar reclamações e gerar relatório"*
 
-### Recomendações
-1. **Priorizar resolução**: Focar nos 65% de casos pendentes
-2. **Melhorar App**: Investir em UX e performance da aplicação
-3. **Treinamento**: Capacitar equipe para problemas de cartão
-4. **Automação PIX**: Implementar soluções para transações PIX
+### **Insights Gerados pela IA:**
+- 📈 **Análise contextualizada** dos dados
+- 🎯 **Recomendações específicas** por categoria
+- 📊 **Tendências e padrões** identificados
+- 🚀 **Ações estratégicas** personalizadas
+- 💡 **Soluções inovadoras** baseadas em IA
 
 ## 🐳 Deploy com Docker
 
@@ -158,13 +204,31 @@ docker run -p 8080:8080 bedrock-reclamacoes
 - **Tempo de Resposta**: 65% respondidas ⚠️ (Meta: >90%)
 - **Categorização**: 100% das reclamações categorizadas ✅
 
+## 📧 Configuração de E-mail
+
+### Gmail (Recomendado)
+1. Ative a verificação em duas etapas
+2. Gere uma senha de app: https://myaccount.google.com/apppasswords
+3. Configure no arquivo `.env`:
+```
+EMAIL_SENDER=seu_email@gmail.com
+EMAIL_PASSWORD=sua_senha_de_app
+```
+
+### Outros Provedores
+Ajuste as configurações SMTP no `email_sender.py`
+
 ## 🔮 Próximas Melhorias
 
-- [ ] Análise de sentimento com NLP
-- [ ] Predição de escalação de problemas
-- [ ] Dashboard interativo
-- [ ] Alertas automáticos
-- [ ] Integração com CRM
+- [x] **Agente IA conversacional** ✅
+- [x] **Integração Bedrock Claude** ✅
+- [x] **Chat interativo** ✅
+- [x] **Servidor IA** ✅
+- [ ] Análise de sentimento avançada
+- [ ] Predição com machine learning
+- [ ] Dashboard web interativo
+- [ ] Alertas inteligentes
+- [ ] Integração multi-fontes
 
 ## 📝 Logs e Monitoramento
 
@@ -184,4 +248,6 @@ O sistema integra com AWS OpenTelemetry para:
 
 ---
 
-**Desenvolvido com Amazon Bedrock AgentCore** 🚀
+**🤖 Agente de IA desenvolvido com Amazon Bedrock AgentCore + Claude 3 Sonnet** 🚀
+
+📖 **Leia o [GUIA_AGENTE_IA.md](GUIA_AGENTE_IA.md) para usar todas as funcionalidades de IA!**

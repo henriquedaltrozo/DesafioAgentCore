@@ -1,0 +1,39 @@
+# Credenciais e configurações sensíveis
+.env
+*.key
+*.pem
+
+# Arquivos Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Ambientes virtuais
+venv/
+env/
+ENV/
+
+# Relatórios e e-mails gerados
+relatorio_*.pdf
+resumo_*.txt
+email_backup_*.txt
+email_enviado_*.txt
+
+# Arquivos de teste
+test_*.py
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
