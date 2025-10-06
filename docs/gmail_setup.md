@@ -23,7 +23,7 @@ EMAIL_PASSWORD=sua_senha_de_app_de_16_caracteres
 
 ### 4. Testar
 ```bash
-python my_agent.py destinatario@email.com
+python src/my_agent.py destinatario@email.com
 ```
 
 ## Alternativa: Usar Outro Provedor

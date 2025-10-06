@@ -12,7 +12,7 @@ Seu projeto agora é um **verdadeiro agente de IA** que usa:
 
 ### 1. **Modo Conversacional** (Nova funcionalidade)
 ```bash
-python ai_chat_demo.py
+python src/ai_chat_demo.py
 ```
 
 **Exemplos de perguntas:**
@@ -23,14 +23,14 @@ python ai_chat_demo.py
 
 ### 2. **Modo Servidor IA** (Recomendado)
 ```bash
-python bedrock_ai_server.py
+python src/bedrock_ai_server.py
 ```
 Inicia o agente como serviço Bedrock para integração com aplicações.
 
 ### 3. **Modo Análise Rápida** (Mantido)
 ```bash
-python my_agent.py
-python my_agent.py email@exemplo.com
+python src/my_agent.py
+python src/my_agent.py email@exemplo.com
 ```
 
 ## 🧠 Capacidades da IA
@@ -100,7 +100,7 @@ AWS_DEFAULT_REGION=us-east-1
 ## 🎛️ Configurações Avançadas
 
 ### **Modelo de IA:**
-No arquivo `my_agent.py`:
+No arquivo `src/my_agent.py`:
 ```python
 modelId='amazon.nova-micro-v1:0'
 ```
@@ -143,7 +143,7 @@ graph TD
 
 ## 🚀 Próximos Passos
 
-1. **Testar conversação:** `python ai_chat_demo.py`
+1. **Testar conversação:** `python src/ai_chat_demo.py`
 2. **Iniciar servidor:** `python bedrock_ai_server.py`
 3. **Integrar com aplicações** via API Bedrock
 4. **Personalizar prompts** para seu negócio

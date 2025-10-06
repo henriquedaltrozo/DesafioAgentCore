@@ -24,7 +24,7 @@ def start_ai_agent():
     print("=" * 55)
     
     # Verificar arquivo de dados
-    if not os.path.exists("reclamacoes_20251001_220605.json"):
+    if not os.path.exists("../data/reclamacoes_20251001_220605.json"):
         print("⚠️  AVISO: Arquivo de dados não encontrado!")
         print("   O agente funcionará apenas em modo conversacional básico")
     else:

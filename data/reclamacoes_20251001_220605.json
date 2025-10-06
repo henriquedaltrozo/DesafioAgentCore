@@ -139,11 +139,11 @@
       "categoria": "Cobrança"
     },
     {
-      "data": "2025-09-15",
-      "titulo": "PIX não reconhecido pelo recebedor",
-      "descricao": "Realizei um PIX mas o beneficiário não recebeu o valor, mesmo constando como enviado.",
+      "data": "2025-10-01",
+      "titulo": "Aplicativo trava na tela de login",
+      "descricao": "Desde a última atualização, o aplicativo trava assim que tento fazer login. Já reinstalei e limpei o cache, mas o problema continua.",
       "status": "Não respondida",
-      "categoria": "PIX"
+      "categoria": "App"
     }
   ]
 }

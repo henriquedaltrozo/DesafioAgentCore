@@ -18,7 +18,7 @@ from reportlab.platypus import Image as ReportLabImage
 # Configurar matplotlib para não usar GUI
 matplotlib.use('Agg')
 
-class ReclamacoesAnalyzer:
+class Analyzer:
     def __init__(self, json_file_path):
         self.json_file_path = json_file_path
         self.data = None
@@ -231,6 +231,16 @@ CATEGORIAS MAIS CITADAS:
         """Gera o relatório em PDF"""
         if self.df is None:
             return False
+        
+        # Garantir que o diretório results existe
+        import os
+        results_dir = "../results"
+        if not os.path.exists(results_dir):
+            os.makedirs(results_dir, exist_ok=True)
+        
+        # Se apenas o nome do arquivo foi fornecido, colocar na pasta results
+        if not os.path.dirname(output_path):
+            output_path = os.path.join(results_dir, output_path)
         
         try:
             doc = SimpleDocTemplate(output_path, pagesize=A4, rightMargin=72, leftMargin=72,

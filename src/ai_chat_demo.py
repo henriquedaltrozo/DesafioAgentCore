@@ -15,7 +15,7 @@ def demo_conversational_ai():
     print("Digite suas perguntas ou 'sair' para encerrar")
     print("Exemplos:")
     print("- Qual a categoria com mais reclamações?")
-    print("- Como melhorar o atendimento?")
+    print("- Como melhorar o serviço?")
     print("- Analisar reclamações (para gerar relatório)")
     print("-" * 50)
     

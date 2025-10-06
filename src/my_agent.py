@@ -1,6 +1,6 @@
 
 from bedrock_agentcore import BedrockAgentCoreApp
-from reclamacoes_analyzer import ReclamacoesAnalyzer
+from analyzer import Analyzer
 from email_sender import EmailSender
 import os
 import json
@@ -56,15 +56,20 @@ def get_ai_response(user_message, context_data=None):
     try:
         # Tentar usar Bedrock Claude primeiro
         system_prompt = """
-Você é um assistente do Sicredi especializado em reclamações.
+Você é um assistente do Sicredi especializado em análise de reclamações.
+
+IMPORTANTE: Analise CUIDADOSAMENTE o que o usuário está perguntando:
+- Se pergunta sobre "MAIS/MAIOR/MÁXIMO" → responda sobre a categoria com MAIS reclamações
+- Se pergunta sobre "MENOS/MENOR/MÍNIMO" → responda sobre a categoria com MENOS reclamações
+- Seja PRECISO com os dados fornecidos
 
 RESPONDA APENAS o que foi perguntado de forma BREVE e NATURAL.
 
-Se for uma saudação simples (oi, olá), responda apenas com uma saudação amigável e pergunte como pode ajudar.
+Se for uma saudação simples, responda amigavelmente e pergunte como pode ajudar.
 
 NÃO gere relatórios automáticos a menos que seja especificamente solicitado.
 
-Seja conversacional e direto.
+Seja conversacional, direto e ATENTO aos detalhes da pergunta.
 """
         
         context = ""
@@ -111,17 +116,64 @@ def get_rule_based_response(user_message, context_data=None):
         if context_data:
             total = context_data.get('total_reclamacoes', 0)
             categorias = len(context_data.get('categorias', {}))
-            return f"📊 SITUAÇÃO ATUAL:\n• Total de reclamações: {total}\n• Categorias identificadas: {categorias}\n• Taxa de resolução baixa detectada\n• Principais problemas: Cartão e App\n\nPrecisa de análise detalhada?"
+            status_data = context_data.get('status', {})
+            resolvidos = status_data.get('Resolvido', {}).get('count', 0) if status_data else 0
+            taxa_resolucao = (resolvidos / total * 100) if total > 0 else 0
+            
+            return f"📊 SITUAÇÃO ATUAL:\n• Total de reclamações: {total}\n• Categorias identificadas: {categorias}\n• Taxa de resolução: {taxa_resolucao:.1f}%\n• Status: {'CRÍTICO' if taxa_resolucao < 50 else 'ATENÇÃO' if taxa_resolucao < 70 else 'BOM'}\n\nPrecisa de análise detalhada?"
         return "Para ver a situação atual, preciso analisar os dados. Digite 'analisar reclamações'."
     
-    # Perguntas sobre categorias
+    # Perguntas sobre categorias - mais inteligente
     if any(word in msg_lower for word in ['categoria', 'tipo', 'problema']):
         if context_data and 'categorias' in context_data:
             cats = context_data['categorias']
-            top_cat = max(cats.items(), key=lambda x: x[1]['count']) if cats else None
-            if top_cat:
-                return f"🎯 CATEGORIAS PROBLEMÁTICAS:\n• Mais crítica: {top_cat[0]} ({top_cat[1]['count']} casos)\n• Requer atenção imediata\n• Recomendo análise específica desta categoria\n\nQuer detalhes sobre como resolver?"
-        return "As principais categorias são: Cartão, App, PIX, Cobrança, Atendimento e Conta. Digite 'analisar reclamações' para ver detalhes."
+            if cats:
+                # Ordenar categorias por quantidade
+                sorted_cats = sorted(cats.items(), key=lambda x: x[1]['count'], reverse=True)
+                
+                # Detectar se pergunta é sobre "mais" ou "menos"
+                if any(word in msg_lower for word in ['menos', 'menor', 'baixa', 'mínimo', 'pequena']):
+                    # Categoria com MENOS reclamações
+                    bottom_cat = sorted_cats[-1]  # Último da lista (menor)
+                    return f"📉 CATEGORIA COM MENOS RECLAMAÇÕES:\n• {bottom_cat[0]}: {bottom_cat[1]['count']} casos ({bottom_cat[1]['percentage']}%)\n• Esta categoria está com baixa incidência\n• Pode indicar processo bem estruturado\n"
+                
+                elif any(word in msg_lower for word in ['mais', 'maior', 'alta', 'máximo', 'crítica', 'problemática']):
+                    # Categoria com MAIS reclamações  
+                    top_cat = sorted_cats[0]  # Primeiro da lista (maior)
+                    return f"🎯 CATEGORIA COM MAIS RECLAMAÇÕES:\n• {top_cat[0]}: {top_cat[1]['count']} casos ({top_cat[1]['percentage']}%)\n• Requer atenção imediata\n• Categoria mais problemática identificada\n"
+                
+                else:
+                    # Pergunta geral sobre categorias
+                    top_cat = sorted_cats[0]
+                    return f"📊 RESUMO DAS CATEGORIAS:\n• Mais problemática: {top_cat[0]} ({top_cat[1]['count']} casos)\n• Total de categorias: {len(cats)}\n• Distribuição variada identificada\n"
+                    
+        return "As principais categorias são: Cartão, App, PIX, Cobrança, Atendimento e Conta. Digite 'analisar reclamações' para ver detalhes completos."
+    
+    # Perguntas sobre status das reclamações
+    if any(word in msg_lower for word in ['resolvido', 'resolvida', 'status', 'pendente', 'respondida']):
+        if context_data and 'status' in context_data:
+            status_data = context_data['status']
+            if status_data:
+                sorted_status = sorted(status_data.items(), key=lambda x: x[1]['count'], reverse=True)
+                
+                if any(word in msg_lower for word in ['resolvido', 'resolvida', 'solucionado']):
+                    resolvidos = status_data.get('Resolvido', {})
+                    total = sum(s['count'] for s in status_data.values())
+                    if resolvidos:
+                        taxa = (resolvidos['count'] / total) * 100
+                        return f"✅ RECLAMAÇÕES RESOLVIDAS:\n• Quantidade: {resolvidos['count']} casos\n• Percentual: {resolvidos['percentage']}%\n• Taxa geral: {taxa:.1f}% do total\n• Status: {'Excelente' if taxa > 80 else 'Crítico' if taxa < 50 else 'Regular'}\n\nQuer estratégias para melhorar?"
+                    
+                elif any(word in msg_lower for word in ['pendente', 'não resolvido', 'aberta', 'em aberto']):
+                    nao_resolvidos = status_data.get('Não resolvido', {})
+                    nao_respondidas = status_data.get('Não respondida', {})
+                    total_pendentes = (nao_resolvidos.get('count', 0) + nao_respondidas.get('count', 0))
+                    return f"⚠️ RECLAMAÇÕES PENDENTES:\n• Não resolvidas: {nao_resolvidos.get('count', 0)} ({nao_resolvidos.get('percentage', 0)}%)\n• Não respondidas: {nao_respondidas.get('count', 0)} ({nao_respondidas.get('percentage', 0)}%)\n• Total pendente: {total_pendentes} casos\n• Prioridade: ALTA - Requer ação imediata!\n\nPrecisa de plano de ação?"
+                    
+                else:
+                    # Resumo geral dos status
+                    return f"📋 RESUMO DOS STATUS:\n" + "\n".join([f"• {status}: {data['count']} ({data['percentage']}%)" for status, data in sorted_status]) + f"\n\nTotal analisado: {sum(s['count'] for s in status_data.values())} reclamações"
+        
+        return "Para ver o status das reclamações, digite 'analisar reclamações' para carregar os dados."
     
     # Perguntas sobre melhorias
     if any(word in msg_lower for word in ['melhorar', 'resolver', 'solução', 'como']):
@@ -141,11 +193,11 @@ def invoke(payload):
     recipient_email = payload.get("email", None)
     
     # Carregar dados para contexto da IA
-    json_file_path = "reclamacoes_20251001_220605.json"
+    json_file_path = "../data/reclamacoes_20251001_220605.json"
     context_data = None
     
     if os.path.exists(json_file_path):
-        analyzer = ReclamacoesAnalyzer(json_file_path)
+        analyzer = Analyzer(json_file_path)
         if analyzer.load_data():
             context_data = {
                 "total_reclamacoes": len(analyzer.data),
@@ -176,7 +228,7 @@ def invoke(payload):
     
     try:
         # Caminho para o arquivo JSON
-        json_file_path = "reclamacoes_20251001_220605.json"
+        json_file_path = "../data/reclamacoes_20251001_220605.json"
         
         # Verificar se o arquivo existe
         if not os.path.exists(json_file_path):
@@ -186,7 +238,7 @@ def invoke(payload):
             }
         
         # Criar instância do analisador
-        analyzer = ReclamacoesAnalyzer(json_file_path)
+        analyzer = Analyzer(json_file_path)
         
         # Carregar os dados
         if not analyzer.load_data():
@@ -202,7 +254,12 @@ def invoke(payload):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         pdf_filename = f"relatorio_reclamacoes_{timestamp}.pdf"
         
+        # O analyzer já vai salvar na pasta results automaticamente
         pdf_success = analyzer.generate_pdf_report(pdf_filename)
+        
+        # Ajustar o caminho do arquivo para referência completa
+        if pdf_success:
+            pdf_full_path = f"../results/{pdf_filename}"
         
         # Obter estatísticas detalhadas
         categoria_analysis = analyzer.analyze_categories()
@@ -222,7 +279,7 @@ def invoke(payload):
             "status_analysis": make_json_serializable(status_analysis),
             "trends": trends_serializable,
             "pdf_generated": pdf_success,
-            "pdf_filename": pdf_filename if pdf_success else None,
+            "pdf_filename": pdf_full_path if pdf_success else None,
             "status": "success"
         }
         
@@ -273,7 +330,7 @@ def invoke(payload):
         if recipient_email:
             email_sender = EmailSender()
             email_result = email_sender.send_report_email(
-                pdf_filename if pdf_success else None,
+                pdf_full_path if pdf_success else None,
                 summary,
                 recipient_email
             )
@@ -294,7 +351,7 @@ def executar_analise_rapida(email_destinatario=None):
     print("=" * 60)
     
     # Verificar se o arquivo de dados existe
-    data_file = "reclamacoes_20251001_220605.json"
+    data_file = "../data/reclamacoes_20251001_220605.json"
     if not os.path.exists(data_file):
         print(f"Erro: Arquivo {data_file} nao encontrado!")
         return
