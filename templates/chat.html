@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Agente IA - Sicredi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
+        .container { max-width: fit-content; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; }
+        .header { background: #2c5aa0; color: white; padding: 20px; text-align: center; }
+        .chat-container { flex: 1; display: flex; flex-direction: column; background: white; }
+        .messages { flex: 1; padding: 20px; overflow-y: auto; }
+        .message { margin-bottom: 15px; }
+        .user-message { text-align: right; }
+        .user-message .bubble { background: #007bff; color: white; padding: 10px 15px; border-radius: 18px; display: inline-block; max-width: 70%; }
+        .ai-message .bubble { background: #e9ecef; color: #333; padding: 10px 15px; border-radius: 18px; display: inline-block; max-width: 70%; }
+        .input-container { padding: 20px; border-top: 1px solid #ddd; display: flex; gap: 10px; }
+        .input-container input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 25px; outline: none; }
+        .input-container button { padding: 12px 20px; background: #007bff; color: white; border: none; border-radius: 25px; cursor: pointer; }
+        .input-container button:hover { background: #0056b3; }
+        .typing { color: #666; font-style: italic; }
+        .analysis-info { background: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.9em; }
+        .error-info { background: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Agente IA - Análise de Reclamações</h1>
+            <p>Sicredi | Powered by Amazon Bedrock AgentCore</p>
+        </div>
+        
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <div class="message ai-message">
+                    <div class="bubble">
+                        Olá! Sou o agente de IA especializado em análise de reclamações no Reclame Aqui sobre o Sicredi. 
+                        Como posso ajudar você hoje?
+                        <br><br>
+                        <strong>Exemplos:</strong><br>
+                        • "Qual a situação das reclamações?"<br>
+                        • "Como melhorar o atendimento?"<br>
+                        • "Gerar relatório e enviar para email@exemplo.com"
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <input type="text" id="messageInput" placeholder="Digite sua pergunta..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addMessage(content, isUser = false, type = 'conversational') {
+            const messagesDiv = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
+            
+            let bubbleContent = `<div class="bubble">${content}</div>`;
+            
+            if (!isUser && type === 'analysis') {
+                bubbleContent += '<div class="analysis-info">📊 Análise completa gerada!</div>';
+            } else if (!isUser && type === 'error') {
+                bubbleContent = `<div class="bubble error-info">${content}</div>`;
+            }
+            
+            messageDiv.innerHTML = bubbleContent;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function showTyping() {
+            const messagesDiv = document.getElementById('messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message ai-message';
+            typingDiv.id = 'typing';
+            typingDiv.innerHTML = '<div class="bubble typing">🤖 Processando...</div>';
+            messagesDiv.appendChild(typingDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function removeTyping() {
+            const typingDiv = document.getElementById('typing');
+            if (typingDiv) {
+                typingDiv.remove();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Adicionar mensagem do usuário
+            addMessage(message, true);
+            input.value = '';
+            
+            // Mostrar indicador de digitação
+            showTyping();
+            
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+                
+                const data = await response.json();
+                
+                removeTyping();
+                
+                if (data.error) {
+                    addMessage(`❌ Erro: ${data.error}`, false, 'error');
+                } else {
+                    let responseText = data.response.replace(/\n/g, '<br>');
+                    
+                    // Adicionar informações extras se for análise
+                    if (data.type === 'analysis') {
+                        if (data.pdf_filename) {
+                            const filename = data.pdf_filename.split('\\').pop();
+                            responseText += `<br><br>📄 <strong><a href="/download/${filename}" target="_blank" style="color: #007bff; text-decoration: underline;">Baixar Relatório PDF (${filename})</a></strong>`;
+                        }
+                        if (data.email_sent) {
+                            responseText += `<br>✅ <strong>E-mail enviado com sucesso!</strong>`;
+                        } else if (data.email_message) {
+                            responseText += `<br>❌ <strong>Erro no e-mail:</strong> ${data.email_message}`;
+                        }
+                    }
+                    
+                    addMessage(responseText, false, data.type);
+                }
+                
+            } catch (error) {
+                removeTyping();
+                addMessage(`❌ Erro de conexão: ${error.message}`, false, 'error');
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Focar no input ao carregar
+        document.getElementById('messageInput').focus();
+    </script>
+</body>
+</html>

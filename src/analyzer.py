@@ -234,7 +234,8 @@ CATEGORIAS MAIS CITADAS:
         
         # Garantir que o diretório results existe
         import os
-        results_dir = "../results"
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        results_dir = os.path.join(os.path.dirname(current_dir), "results")
         if not os.path.exists(results_dir):
             os.makedirs(results_dir, exist_ok=True)
         

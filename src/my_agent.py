@@ -1,6 +1,10 @@
 
 from bedrock_agentcore import BedrockAgentCoreApp
-from analyzer import Analyzer
+import sys
+import os
+
+from src.analyzer import Analyzer
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 from email_sender import EmailSender
 import os
 import json
@@ -36,9 +40,9 @@ def make_json_serializable(obj):
         return {str(k): make_json_serializable(v) for k, v in obj.items()}
     elif isinstance(obj, list):
         return [make_json_serializable(v) for v in obj]
-    elif isinstance(obj, (np.integer, np.int64, np.int32)):
+    elif isinstance(obj, np.integer):
         return int(obj)
-    elif isinstance(obj, (np.floating, np.float64, np.float32)):
+    elif isinstance(obj, np.floating):
         return float(obj)
     elif isinstance(obj, np.ndarray):
         return obj.tolist()
@@ -78,6 +82,9 @@ Seja conversacional, direto e ATENTO aos detalhes da pergunta.
         
         prompt = f"{system_prompt}\n\nPergunta do usuário: {user_message}{context}"
         
+        if bedrock_client is None:
+            raise Exception("Bedrock client is not available.")
+        
         response = bedrock_client.invoke_model(
             modelId='amazon.nova-micro-v1:0',
             body=json.dumps({
@@ -109,7 +116,7 @@ def get_rule_based_response(user_message, context_data=None):
     
     # Saudações
     if any(word in msg_lower for word in ['oi', 'olá', 'hello', 'bom dia', 'boa tarde']):
-        return "Olá! Sou o agente de análise de reclamações do Sicredi. Posso ajudar com:\n• Análise de dados de reclamações\n• Insights sobre categorias problemáticas\n• Recomendações de melhoria\n• Geração de relatórios\n\nO que gostaria de saber?"
+        return "Olá! Sou o agente de análise de reclamações do Sicredi. Posso ajudar com:\n• Análise de dados de reclamações\n• Insights sobre categorias problemáticas\n• Geração de relatórios\n\nO que gostaria de saber?"
     
     # Perguntas sobre situação atual
     if any(word in msg_lower for word in ['situação', 'status', 'como está']):
@@ -120,7 +127,7 @@ def get_rule_based_response(user_message, context_data=None):
             resolvidos = status_data.get('Resolvido', {}).get('count', 0) if status_data else 0
             taxa_resolucao = (resolvidos / total * 100) if total > 0 else 0
             
-            return f"📊 SITUAÇÃO ATUAL:\n• Total de reclamações: {total}\n• Categorias identificadas: {categorias}\n• Taxa de resolução: {taxa_resolucao:.1f}%\n• Status: {'CRÍTICO' if taxa_resolucao < 50 else 'ATENÇÃO' if taxa_resolucao < 70 else 'BOM'}\n\nPrecisa de análise detalhada?"
+            return f"📊 SITUAÇÃO ATUAL:\n• Total de reclamações: {total}\n• Categorias identificadas: {categorias}\n• Taxa de resolução: {taxa_resolucao:.1f}%\n• Status: {'CRÍTICO' if taxa_resolucao < 50 else 'ATENÇÃO' if taxa_resolucao < 70 else 'BOM'}\n"
         return "Para ver a situação atual, preciso analisar os dados. Digite 'analisar reclamações'."
     
     # Perguntas sobre categorias - mais inteligente
@@ -184,7 +191,7 @@ def get_rule_based_response(user_message, context_data=None):
         return "📋 Para gerar análise completa, o sistema irá:\n• Processar todos os dados\n• Calcular métricas importantes\n• Gerar gráficos e insights\n• Criar relatório PDF\n\nConfirma a análise? (Digite 'sim' ou use o comando direto)"
     
     # Resposta padrão
-    return "🤖 Sou especialista em análise de reclamações. Posso ajudar com:\n\n• 📊 Situação atual das reclamações\n• 🎯 Categorias mais problemáticas\n• 💡 Recomendações de melhoria\n• 📋 Geração de relatórios completos\n\nO que gostaria de saber especificamente?"
+    return "🤖 Sou especialista em análise de reclamações. Posso ajudar com:\n\n• 📊 Situação atual das reclamações\n• 🎯 Categorias mais problemáticas\n• 📋 Geração de relatórios completos\n\nO que gostaria de saber especificamente?"
 
 @app.entrypoint
 def invoke(payload):
@@ -193,14 +200,15 @@ def invoke(payload):
     recipient_email = payload.get("email", None)
     
     # Carregar dados para contexto da IA
-    json_file_path = "../data/reclamacoes_20251001_220605.json"
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    json_file_path = os.path.join(os.path.dirname(current_dir), "data", "reclamacoes_20251001_220605.json")
     context_data = None
     
     if os.path.exists(json_file_path):
         analyzer = Analyzer(json_file_path)
         if analyzer.load_data():
             context_data = {
-                "total_reclamacoes": len(analyzer.data),
+                "total_reclamacoes": analyzer.data['metadata']['total_reclamacoes'] if analyzer.data is not None else 0,
                 "categorias": analyzer.analyze_categories(),
                 "status": analyzer.analyze_status()
             }
@@ -228,7 +236,8 @@ def invoke(payload):
     
     try:
         # Caminho para o arquivo JSON
-        json_file_path = "../data/reclamacoes_20251001_220605.json"
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        json_file_path = os.path.join(os.path.dirname(current_dir), "data", "reclamacoes_20251001_220605.json")
         
         # Verificar se o arquivo existe
         if not os.path.exists(json_file_path):
@@ -259,18 +268,18 @@ def invoke(payload):
         
         # Ajustar o caminho do arquivo para referência completa
         if pdf_success:
-            pdf_full_path = f"../results/{pdf_filename}"
+            pdf_full_path = os.path.join(os.path.dirname(current_dir), "results", pdf_filename)
         
         # Obter estatísticas detalhadas
         categoria_analysis = analyzer.analyze_categories()
-        status_analysis = analyzer.analyze_status()
+        status_analysis = analyzer.analyze_status() or {}
         trends = analyzer.analyze_trends()
         
         # Converter trends para formato JSON serializável
         trends_serializable = {
-            'date_range': trends['date_range'],
-            'daily_trends_count': len(trends['daily_trends']) if hasattr(trends['daily_trends'], '__len__') else 0,
-            'weekly_trends_summary': {str(k): int(v) for k, v in trends['weekly_trends'].items()} if hasattr(trends['weekly_trends'], 'items') else {}
+            'date_range': trends['date_range'] if trends and 'date_range' in trends else {},
+            'daily_trends_count': len(trends['daily_trends']) if trends and hasattr(trends['daily_trends'], '__len__') else 0,
+            'weekly_trends_summary': {str(k): int(v) for k, v in trends['weekly_trends'].items()} if trends and hasattr(trends['weekly_trends'], 'items') else {}
         }
         
         result = {
@@ -298,11 +307,10 @@ def invoke(payload):
         }
         
         # Gerar insights baseados nos dados
-        categoria_critica = max(categoria_analysis.items(), key=lambda x: x[1]['count'])[0]
+        categoria_critica = max(categoria_analysis.items(), key=lambda x: x[1]['count'])[0] if categoria_analysis else "N/A"
         nao_resolvidos = sum(dados['count'] for status, dados in status_analysis.items() if status != 'Resolvido')
         
-        ai_insights = f"""
-🧠 INSIGHTS ESTRATÉGICOS GERADOS:
+        ai_insights = f"""🧠 INSIGHTS ESTRATÉGICOS GERADOS:
 
 📊 SITUAÇÃO CRÍTICA IDENTIFICADA:
 • Taxa de resolução: {taxa_resolucao:.1f}% (MUITO BAIXA)
@@ -321,8 +329,7 @@ def invoke(payload):
 • Implementar SLA de 48h para resposta
 • Dashboard de monitoramento em tempo real
 
-🚀 META: Elevar taxa de resolução para >80% em 30 dias
-"""
+🚀 META: Elevar taxa de resolução para >80% em 30 dias"""
         
         result["ai_insights"] = ai_insights
         
@@ -351,7 +358,8 @@ def executar_analise_rapida(email_destinatario=None):
     print("=" * 60)
     
     # Verificar se o arquivo de dados existe
-    data_file = "../data/reclamacoes_20251001_220605.json"
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    data_file = os.path.join(os.path.dirname(current_dir), "data", "reclamacoes_20251001_220605.json")
     if not os.path.exists(data_file):
         print(f"Erro: Arquivo {data_file} nao encontrado!")
         return
