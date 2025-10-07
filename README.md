@@ -9,19 +9,19 @@ Este projeto automatiza a análise de reclamações recebidas, gera relatórios 
 - **Processamento inteligente**: Sumarização e classificação automática dos dados
 
 ## Funcionalidades
+- Interface Web moderna com chat interativo em tempo real
 - Análise automática de reclamações (JSON)
-- Geração de relatórios em PDF
-- Chat interativo com IA para dúvidas e análises
+- Geração de relatórios em PDF com download direto
+- Chat interativo com IA para dúvidas e análises (web e terminal)
 - Envio automático de relatórios por email (Gmail)
 
 ## Pré-requisitos
 - Python 3.13+
 - AWS CLI configurado (com credenciais válidas)
 - **Amazon Bedrock** habilitado na região us-east-1
-- Acesso ao modelo **Claude Nova Micro** no Bedrock
 - **Bedrock AgentCore SDK** (`bedrock-agentcore`)
 - Dependências listadas em `requirements.txt`
-- Conta Gmail com autenticação em duas etapas (opcional, para envio de email)
+- Conta Gmail com autenticação em duas etapas
 
 ## Instalação
 1. Clone este repositório:
@@ -51,7 +51,17 @@ Este projeto automatiza a análise de reclamações recebidas, gera relatórios 
 
 ## Como Usar
 
-### Chat interativo com IA
+### Interface Web de Chat (Recomendado)
+```bash
+python web_chat.py
+```
+Acesse **http://localhost:5000** no seu navegador para usar a interface web moderna com:
+- Chat interativo em tempo real
+- Interface gráfica intuitiva
+- Download automático de relatórios PDF
+- Envio de relatórios por email integrado
+
+### Chat interativo via terminal
 ```bash
 python src/ai_chat_demo.py
 ```

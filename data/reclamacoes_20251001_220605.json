@@ -1,148 +1,1408 @@
 {
   "metadata": {
-    "total_reclamacoes": 20,
+    "total_reclamacoes": 200,
     "data_extracao": "2025-10-02T00:15:00.000000",
-    "fonte": "Reclame Aqui - Sicredi"
+    "fonte": "Reclame Aqui - Sicredi (simulado)"
   },
   "reclamacoes": [
     {
-      "data": "2025-09-30",
-      "titulo": "PIX não funciona no app",
-      "descricao": "Tentei fazer uma transferência via PIX pelo aplicativo mas sempre dá erro. Já tentei várias vezes e não consegui resolver.",
+      "data": "2025-09-29",
+      "titulo": "Cobrança indevida na conta (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-01",
+      "titulo": "App trava na tela de transferência",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-01",
+      "titulo": "Cobrança indevida no cartão",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
+      "status": "Não resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-13",
+      "titulo": "Chave PIX não encontrada",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Isso me causou prejuízo e quero estorno.",
       "status": "Não respondida",
       "categoria": "PIX"
     },
     {
-      "data": "2025-09-29",
+      "data": "2025-09-30",
+      "titulo": "Transferência TED não realizada",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "Erro ao confirmar operação pelo app",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-13",
+      "titulo": "Tela de login do app travada",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Agência sem pessoal suficiente (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-13",
+      "titulo": "App trava na tela de transferência",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-13",
+      "titulo": "Cobrança de serviço não contratado (desde ontem)",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-21",
+      "titulo": "Tela de login do app travada",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Depósito não creditado na conta (intermitente)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Erros no extrato da conta",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Problema com aviso de cobrança",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-28",
+      "titulo": "Notificações do app não funcionam",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-11",
+      "titulo": "PIX não funciona no app",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-17",
+      "titulo": "Erro na fatura do cartão (após atualização)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Cobrança de tarifa indevida",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-12",
+      "titulo": "Atendente não solucionou o problema",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Cartão de crédito bloqueado sem aviso (após atualização)",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Não resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-30",
+      "titulo": "Site institucional apresenta erro (essa semana)",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "Site institucional apresenta erro",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta.",
+      "status": "Resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-01",
+      "titulo": "Conta bloqueada sem motivo (após atualização)",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Problema com aviso de cobrança (após atualização)",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Não respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Atendimento no chat não resolve nada",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "App apresenta erro na autenticação (essa semana)",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-05",
+      "titulo": "PIX não funciona no app (desde ontem)",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-18",
+      "titulo": "Atualização deixou o app lento",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-06",
+      "titulo": "Erro ao confirmar operação pelo app",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-09",
+      "titulo": "Demora no atendimento telefônico (essa semana)",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "Erro na fatura do cartão",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-19",
       "titulo": "Cartão de crédito bloqueado sem aviso",
-      "descricao": "Meu cartão foi bloqueado do nada e não recebi nenhuma comunicação. Fui fazer uma compra e não passou.",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Isso me causou prejuízo e quero estorno.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-08",
+      "titulo": "Atendente não solucionou o problema (após atualização)",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "App trava na tela de transferência (após atualização)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Isso me causou prejuízo e quero estorno.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-30",
+      "titulo": "Problemas com cartão virtual",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-06",
+      "titulo": "Dificuldade para alterar limite do cartão",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-04",
+      "titulo": "Agência sem pessoal suficiente",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Isso me causou prejuízo e quero estorno.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-23",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Isso me causou prejuízo e quero estorno.",
+      "status": "Resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "Problemas com cartão virtual",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Transferência TED não realizada (desde ontem)",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-27",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "Cobrança de serviço não contratado (intermitente)",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-20",
+      "titulo": "PIX não funciona no app",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Dificuldade para alterar limite do cartão",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-08",
+      "titulo": "Problema no débito automático",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-09",
+      "titulo": "Agência sem pessoal suficiente",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-04",
+      "titulo": "Erro no agendamento de serviços",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Isso me causou prejuízo e quero estorno.",
+      "status": "Não resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-26",
+      "titulo": "App trava na tela de transferência",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-23",
+      "titulo": "Erros no extrato da conta",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Erro ao confirmar operação pelo app",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-10",
+      "titulo": "Depósito não creditado na conta (desde ontem)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Resolvido",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Erro na fatura do cartão",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-10",
+      "titulo": "Transferência via PIX falha",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "Erro na fatura do cartão",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Demora no atendimento telefônico",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Não respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-02",
+      "titulo": "Cobrança de tarifa indevida (intermitente)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-19",
+      "titulo": "Atendente não solucionou o problema",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-28",
+      "titulo": "Notificação enviada incorretamente",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-04",
+      "titulo": "Notificação enviada incorretamente (essa semana)",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro.",
+      "status": "Não resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-29",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-28",
+      "titulo": "Cobrança de serviço não contratado",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-21",
+      "titulo": "Transferência TED não realizada",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "Erro na fatura do cartão (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Isso me causou prejuízo e quero estorno.",
+      "status": "Não resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Tela de login do app travada",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Demora no atendimento telefônico",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-10",
+      "titulo": "PIX não funciona no app",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Erros no extrato da conta",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não resolvido",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-27",
+      "titulo": "Erro na fatura do cartão",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta. Por favor, analisem e informem o que aconteceu.",
+      "status": "Resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "App trava na tela de transferência",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "Problema no débito automático",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Depósito não creditado na conta",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "App não carrega meu extrato (após atualização)",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-23",
+      "titulo": "Empréstimo descontado sem autorização (essa semana)",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-01",
+      "titulo": "Erro no agendamento de serviços (após atualização)",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Não respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Erro ao cadastrar chave PIX",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-04",
+      "titulo": "Erro ao confirmar operação pelo app",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-30",
+      "titulo": "Depósito não creditado na conta",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta. Isso me causou prejuízo e quero estorno.",
+      "status": "Resolvido",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "Notificação enviada incorretamente",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Não resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-01",
+      "titulo": "Problema no débito automático",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-29",
+      "titulo": "Dificuldade para alterar limite do cartão",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "PIX agendado não foi realizado",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-26",
+      "titulo": "Atendente não solucionou o problema",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
+      "status": "Respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-18",
+      "titulo": "Atualização deixou o app lento (intermitente)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-09",
+      "titulo": "Depósito não creditado na conta",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "Tela de login do app travada",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-10",
+      "titulo": "Notificação enviada incorretamente",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-02",
+      "titulo": "Atualização deixou o app lento (intermitente)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Dificuldade para alterar limite do cartão",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização. Entrei em contato com o suporte e não tive retorno.",
       "status": "Respondida",
       "categoria": "Cartão"
     },
     {
       "data": "2025-09-27",
-      "titulo": "App muito lento para abrir",
-      "descricao": "O aplicativo do banco está muito lento, demora muito para carregar e às vezes trava.",
+      "titulo": "Transferência TED não realizada (após atualização)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-08",
+      "titulo": "Depósito não creditado na conta (após atualização)",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Isso me causou prejuízo e quero estorno.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Por favor, analisem e informem o que aconteceu.",
+      "status": "Respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Entrei em contato com o suporte e não tive retorno.",
       "status": "Não resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Problemas com cartão virtual",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "Erro ao cadastrar chave PIX",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Isso me causou prejuízo e quero estorno.",
+      "status": "Resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Transferência via PIX falha",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-06",
+      "titulo": "Atendimento no chat não resolve nada",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-10-01",
+      "titulo": "Cobrança de serviço não contratado",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização. Isso me causou prejuízo e quero estorno.",
+      "status": "Resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Atendente não solucionou o problema",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Cobrança de tarifa indevida (intermitente)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-30",
+      "titulo": "Cobrança indevida na conta",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "App trava na tela de transferência",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-13",
+      "titulo": "Problema com comunicação por email (após atualização)",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Erro ao confirmar operação pelo app",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Isso me causou prejuízo e quero estorno.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-04",
+      "titulo": "Conta bloqueada sem motivo (intermitente)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Resolvido",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "Cobrança de serviço não contratado",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-17",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-07",
+      "titulo": "Depósito não creditado na conta",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-11",
+      "titulo": "Atendimento no chat não resolve nada",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-11",
+      "titulo": "App não reconhece biometria",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Por favor, analisem e informem o que aconteceu.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-11",
+      "titulo": "Transferência via PIX falha",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-17",
+      "titulo": "Notificação enviada incorretamente",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Não respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-05",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "Transferência via PIX falha (desde ontem)",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
+      "status": "Respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Erro ao cadastrar chave PIX",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
+      "status": "Não resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-04",
+      "titulo": "App trava na tela de transferência (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Respondida",
       "categoria": "App"
     },
     {
       "data": "2025-09-26",
-      "titulo": "Cobrança indevida na conta",
-      "descricao": "Apareceu uma cobrança na minha conta que eu não reconheço. Preciso de esclarecimentos urgente.",
-      "status": "Resolvido",
-      "categoria": "Cobrança"
+      "titulo": "Problema com aviso de cobrança",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não respondida",
+      "categoria": "Outros"
     },
     {
-      "data": "2025-09-25",
-      "titulo": "Dificuldade para alterar limite do cartão",
-      "descricao": "Tentei aumentar o limite do meu cartão no aplicativo mas sempre aparece erro de sistema.",
-      "status": "Não respondida",
+      "data": "2025-09-26",
+      "titulo": "Problemas com cartão virtual",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Por favor, analisem e informem o que aconteceu.",
+      "status": "Respondida",
       "categoria": "Cartão"
     },
     {
-      "data": "2025-09-25",
-      "titulo": "Fila de atendimento enorme",
-      "descricao": "Precisei resolver um problema presencialmente e fiquei mais de 2 horas na fila da agência.",
-      "status": "Não resolvido",
-      "categoria": "Atendimento"
-    },
-    {
-      "data": "2025-09-24",
-      "titulo": "Dificuldade para acessar internet banking",
-      "descricao": "Toda vez que tento acessar o internet banking, pede várias autenticações e não entra.",
-      "status": "Não respondida",
+      "data": "2025-09-19",
+      "titulo": "Aplicativo fecha sozinho ao abrir (essa semana)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Respondida",
       "categoria": "App"
     },
     {
-      "data": "2025-09-23",
-      "titulo": "Empréstimo descontado sem autorização",
-      "descricao": "Foi debitado um valor de empréstimo que eu nunca solicitei na minha conta.",
-      "status": "Resolvido",
-      "categoria": "Cobrança"
+      "data": "2025-09-15",
+      "titulo": "Erro na fatura do cartão",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não resolvido",
+      "categoria": "Cartão"
     },
     {
-      "data": "2025-09-23",
-      "titulo": "PIX agendado não foi realizado",
-      "descricao": "Agendei um PIX para pagamento e o valor não foi transferido na data correta.",
+      "data": "2025-10-01",
+      "titulo": "Erro ao cadastrar chave PIX (essa semana)",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
       "status": "Não respondida",
       "categoria": "PIX"
     },
     {
+      "data": "2025-09-04",
+      "titulo": "PIX agendado não foi realizado",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-27",
+      "titulo": "Erros no extrato da conta",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-29",
+      "titulo": "Transferência TED não realizada (após atualização)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não resolvido",
+      "categoria": "Conta"
+    },
+    {
       "data": "2025-09-22",
-      "titulo": "Problemas com cartão virtual",
-      "descricao": "Criei um cartão virtual para compras online, mas não funciona em nenhum site.",
-      "status": "Respondida",
-      "categoria": "Cartão"
+      "titulo": "Site institucional apresenta erro",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Resolvido",
+      "categoria": "Outros"
     },
     {
-      "data": "2025-09-21",
-      "titulo": "Aplicativo não envia SMS de confirmação",
-      "descricao": "Sempre que tento confirmar operações pelo app não recebo o SMS de autenticação.",
-      "status": "Não resolvido",
+      "data": "2025-09-12",
+      "titulo": "Cobrança indevida na conta",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-29",
+      "titulo": "Atualização deixou o app lento",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Resolvido",
       "categoria": "App"
     },
     {
-      "data": "2025-09-21",
-      "titulo": "Conta bloqueada sem motivo",
-      "descricao": "Minha conta foi bloqueada e não consigo movimentar dinheiro. Não recebi explicações.",
-      "status": "Não respondida",
-      "categoria": "Conta"
-    },
-    {
-      "data": "2025-09-20",
-      "titulo": "Erro na fatura do cartão",
-      "descricao": "Minha fatura veio com cobrança duplicada em uma compra que já havia sido paga.",
-      "status": "Resolvido",
-      "categoria": "Cartão"
-    },
-    {
-      "data": "2025-09-19",
-      "titulo": "Agência sem dinheiro no caixa eletrônico",
-      "descricao": "Fui sacar em uma agência e todos os caixas estavam sem dinheiro.",
+      "data": "2025-09-10",
+      "titulo": "Atendente não solucionou o problema",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Por favor, analisem e informem o que aconteceu.",
       "status": "Não resolvido",
       "categoria": "Atendimento"
     },
     {
-      "data": "2025-09-19",
-      "titulo": "Problema no débito automático",
-      "descricao": "Cadastrei minhas contas no débito automático e elas não foram pagas.",
+      "data": "2025-09-22",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
       "status": "Não respondida",
-      "categoria": "Conta"
-    },
-    {
-      "data": "2025-09-18",
-      "titulo": "Atendimento no chat não resolve nada",
-      "descricao": "O chat de atendimento só passa respostas prontas e não soluciona os problemas.",
-      "status": "Não resolvido",
-      "categoria": "Atendimento"
-    },
-    {
-      "data": "2025-09-18",
-      "titulo": "Transferência TED não realizada",
-      "descricao": "Fiz uma TED para outro banco e o valor demorou mais de 2 dias para cair.",
-      "status": "Resolvido",
-      "categoria": "Conta"
-    },
-    {
-      "data": "2025-09-17",
-      "titulo": "Aplicativo fecha sozinho",
-      "descricao": "Toda vez que tento abrir o app ele fecha automaticamente e não consigo acessar.",
-      "status": "Não resolvido",
       "categoria": "App"
     },
     {
-      "data": "2025-09-16",
-      "titulo": "Cobrança de tarifa indevida",
-      "descricao": "Foi debitada uma tarifa de manutenção que não estava prevista no contrato.",
+      "data": "2025-09-22",
+      "titulo": "Cobrança de tarifa indevida (essa semana)",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Entrei em contato com o suporte e não tive retorno.",
       "status": "Respondida",
       "categoria": "Cobrança"
     },
     {
-      "data": "2025-10-01",
-      "titulo": "Aplicativo trava na tela de login",
-      "descricao": "Desde a última atualização, o aplicativo trava assim que tento fazer login. Já reinstalei e limpei o cache, mas o problema continua.",
+      "data": "2025-09-20",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Cobrança indevida no cartão (após atualização)",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
       "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-08",
+      "titulo": "Aplicativo trava na inicialização",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-05",
+      "titulo": "Notificações do app não funcionam",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-02",
+      "titulo": "PIX não funciona no app",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Erro na fatura do cartão",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-27",
+      "titulo": "Agência sem pessoal suficiente (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-11",
+      "titulo": "Tela de login do app travada",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-05",
+      "titulo": "App trava na tela de transferência (intermitente)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-26",
+      "titulo": "Atualização deixou o app lento",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-09",
+      "titulo": "Aplicativo trava na inicialização (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-17",
+      "titulo": "Notificações do app não funcionam",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-10-01",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Isso me causou prejuízo e quero estorno.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-30",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-19",
+      "titulo": "App apresenta erro na autenticação",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Isso me causou prejuízo e quero estorno.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-20",
+      "titulo": "Erro no agendamento de serviços",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "App apresenta erro na autenticação",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Transferência TED não realizada",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "PIX agendado não foi realizado",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-18",
+      "titulo": "Notificações do app não funcionam (desde ontem)",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-10-01",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta.",
+      "status": "Resolvido",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "Cobrança de tarifa indevida",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-26",
+      "titulo": "App não carrega meu extrato",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Isso me causou prejuízo e quero estorno.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-09",
+      "titulo": "Cobrança de serviço não contratado",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Isso me causou prejuízo e quero estorno.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Transferência TED não realizada (intermitente)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-12",
+      "titulo": "App apresenta erro na autenticação",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-05",
+      "titulo": "Erro no agendamento de serviços",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-20",
+      "titulo": "Problema com comunicação por email (após atualização)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-22",
+      "titulo": "Transferência TED não realizada (após atualização)",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-10",
+      "titulo": "Atendente não solucionou o problema",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Site institucional apresenta erro",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-26",
+      "titulo": "Notificações do app não funcionam",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "Notificações do app não funcionam",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-11",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "Foi debitado um valor que não reconheço na minha conta. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-19",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "Fila de atendimento enorme",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-12",
+      "titulo": "Erro ao confirmar operação pelo app",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-21",
+      "titulo": "Site institucional apresenta erro (intermitente)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Resolvido",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-30",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-21",
+      "titulo": "Erro ao cadastrar chave PIX",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-12",
+      "titulo": "Cobrança indevida no cartão (após atualização)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-26",
+      "titulo": "App apresenta erro na autenticação",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-15",
+      "titulo": "Transferência via PIX falha",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
+      "status": "Não resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-17",
+      "titulo": "Conta bloqueada sem motivo",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não resolvido",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-02",
+      "titulo": "Empréstimo descontado sem autorização",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação. Isso me causou prejuízo e quero estorno.",
+      "status": "Resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "PIX agendado não foi realizado (após atualização)",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Não respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-10",
+      "titulo": "Empréstimo descontado sem autorização",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Não resolvido",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-11",
+      "titulo": "Chave PIX não encontrada (após atualização)",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Resolvido",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-10-01",
+      "titulo": "Erro ao cadastrar chave PIX (essa semana)",
+      "descricao": "Espero que o banco analise e retorne com uma solução. Isso me causou prejuízo e quero estorno.",
+      "status": "Não respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-18",
+      "titulo": "Depósito não creditado na conta (intermitente)",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-06",
+      "titulo": "App não carrega meu extrato",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não. Por favor, analisem e informem o que aconteceu.",
+      "status": "Não respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-25",
+      "titulo": "App não reconhece biometria (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-10",
+      "titulo": "Cobrança indevida no cartão (essa semana)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Por favor, analisem e informem o que aconteceu.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-05",
+      "titulo": "Atendente não solucionou o problema",
+      "descricao": "Já reinstalei o aplicativo e limpei o cache, mas persiste o problema.",
+      "status": "Não resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-17",
+      "titulo": "App não reconhece biometria",
+      "descricao": "Espero que o banco analise e retorne com uma solução.",
+      "status": "Resolvido",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-27",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-13",
+      "titulo": "Tela de login do app travada",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes.",
+      "status": "Respondida",
+      "categoria": "App"
+    },
+    {
+      "data": "2025-09-04",
+      "titulo": "Problema no débito automático",
+      "descricao": "Não recebi nenhuma comunicação sobre isso e preciso de uma solução. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-23",
+      "titulo": "Dificuldade para alterar limite do cartão (desde ontem)",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
+      "status": "Não respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-24",
+      "titulo": "Erros no extrato da conta (após atualização)",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro. Já tentei resolver pelo app e pela agência sem sucesso.",
+      "status": "Respondida",
+      "categoria": "Conta"
+    },
+    {
+      "data": "2025-09-21",
+      "titulo": "Demora no atendimento telefônico (desde ontem)",
+      "descricao": "O problema está atrapalhando meu uso diário do serviço. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Não respondida",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-19",
+      "titulo": "Fila de atendimento enorme (essa semana)",
+      "descricao": "Erro intermitente: às vezes funciona, às vezes não.",
+      "status": "Resolvido",
+      "categoria": "Atendimento"
+    },
+    {
+      "data": "2025-09-14",
+      "titulo": "Site institucional apresenta erro",
+      "descricao": "Tentei realizar a operação várias vezes e sempre aparece erro.",
+      "status": "Não respondida",
+      "categoria": "Outros"
+    },
+    {
+      "data": "2025-09-16",
+      "titulo": "PIX não funciona no app",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Entrei em contato com o suporte e não tive retorno.",
+      "status": "Respondida",
+      "categoria": "PIX"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "Débito em duplicidade na fatura",
+      "descricao": "Preciso de uma resposta urgente, já que afetou uma transação.",
+      "status": "Respondida",
+      "categoria": "Cobrança"
+    },
+    {
+      "data": "2025-09-27",
+      "titulo": "Cartão de crédito bloqueado sem aviso",
+      "descricao": "O atendimento não conseguiu resolver e me passou informações conflitantes. Isso me causou prejuízo e quero estorno.",
+      "status": "Respondida",
+      "categoria": "Cartão"
+    },
+    {
+      "data": "2025-09-03",
+      "titulo": "App não reconhece biometria",
+      "descricao": "A funcionalidade que costumava funcionar parou após a última atualização.",
+      "status": "Não resolvido",
       "categoria": "App"
     }
   ]

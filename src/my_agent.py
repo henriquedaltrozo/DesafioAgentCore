@@ -116,7 +116,7 @@ def get_rule_based_response(user_message, context_data=None):
     
     # Saudações
     if any(word in msg_lower for word in ['oi', 'olá', 'hello', 'bom dia', 'boa tarde']):
-        return "Olá! Sou o agente de análise de reclamações do Sicredi. Posso ajudar com:\n• Análise de dados de reclamações\n• Insights sobre categorias problemáticas\n• Recomendações de melhoria\n• Geração de relatórios\n\nO que gostaria de saber?"
+        return "Olá! Sou o agente de análise de reclamações do Sicredi. Posso ajudar com:\n• Análise de dados de reclamações\n• Insights sobre categorias problemáticas\n• Geração de relatórios\n\nO que gostaria de saber?"
     
     # Perguntas sobre situação atual
     if any(word in msg_lower for word in ['situação', 'status', 'como está']):
@@ -127,7 +127,7 @@ def get_rule_based_response(user_message, context_data=None):
             resolvidos = status_data.get('Resolvido', {}).get('count', 0) if status_data else 0
             taxa_resolucao = (resolvidos / total * 100) if total > 0 else 0
             
-            return f"📊 SITUAÇÃO ATUAL:\n• Total de reclamações: {total}\n• Categorias identificadas: {categorias}\n• Taxa de resolução: {taxa_resolucao:.1f}%\n• Status: {'CRÍTICO' if taxa_resolucao < 50 else 'ATENÇÃO' if taxa_resolucao < 70 else 'BOM'}\n\nPrecisa de análise detalhada?"
+            return f"📊 SITUAÇÃO ATUAL:\n• Total de reclamações: {total}\n• Categorias identificadas: {categorias}\n• Taxa de resolução: {taxa_resolucao:.1f}%\n• Status: {'CRÍTICO' if taxa_resolucao < 50 else 'ATENÇÃO' if taxa_resolucao < 70 else 'BOM'}\n"
         return "Para ver a situação atual, preciso analisar os dados. Digite 'analisar reclamações'."
     
     # Perguntas sobre categorias - mais inteligente
@@ -191,7 +191,7 @@ def get_rule_based_response(user_message, context_data=None):
         return "📋 Para gerar análise completa, o sistema irá:\n• Processar todos os dados\n• Calcular métricas importantes\n• Gerar gráficos e insights\n• Criar relatório PDF\n\nConfirma a análise? (Digite 'sim' ou use o comando direto)"
     
     # Resposta padrão
-    return "🤖 Sou especialista em análise de reclamações. Posso ajudar com:\n\n• 📊 Situação atual das reclamações\n• 🎯 Categorias mais problemáticas\n• 💡 Recomendações de melhoria\n• 📋 Geração de relatórios completos\n\nO que gostaria de saber especificamente?"
+    return "🤖 Sou especialista em análise de reclamações. Posso ajudar com:\n\n• 📊 Situação atual das reclamações\n• 🎯 Categorias mais problemáticas\n• 📋 Geração de relatórios completos\n\nO que gostaria de saber especificamente?"
 
 @app.entrypoint
 def invoke(payload):
@@ -208,7 +208,7 @@ def invoke(payload):
         analyzer = Analyzer(json_file_path)
         if analyzer.load_data():
             context_data = {
-                "total_reclamacoes": len(analyzer.data) if analyzer.data is not None else 0,
+                "total_reclamacoes": analyzer.data['metadata']['total_reclamacoes'] if analyzer.data is not None else 0,
                 "categorias": analyzer.analyze_categories(),
                 "status": analyzer.analyze_status()
             }
