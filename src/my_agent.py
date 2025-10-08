@@ -166,7 +166,7 @@ def invoke(payload):
         analyzer = Analyzer(json_file_path)
         if analyzer.load_data():
             context_data = {
-                "total_reclamacoes": len(analyzer.data) if analyzer.data is not None else 0,
+                "total_reclamacoes": analyzer.data['metadata']['total_reclamacoes'] if analyzer.data is not None else 0,
                 "categorias": analyzer.analyze_categories(),
                 "status": analyzer.analyze_status()
             }

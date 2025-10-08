@@ -7,3 +7,5 @@ reportlab
 seaborn
 numpy
 python-dotenv
+flask
+flask-cors
