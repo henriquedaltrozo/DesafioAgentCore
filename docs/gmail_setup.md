@@ -17,7 +17,7 @@
 
 ### 3. Configurar no .env
 ```
-EMAIL_SENDER=iagomwndes432@gmail.com
+EMAIL_SENDER=seu_email@gmail.com
 EMAIL_PASSWORD=sua_senha_de_app_de_16_caracteres
 ```
 
