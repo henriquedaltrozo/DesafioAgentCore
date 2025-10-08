@@ -60,20 +60,61 @@ def get_ai_response(user_message, context_data=None):
     try:
         # Tentar usar Bedrock Claude primeiro
         system_prompt = """
-Você é um assistente do Sicredi especializado em análise de reclamações.
+Você é um assistente virtual especializado em analisar reclamações do Sicredi no site Reclame Aqui.  
+Seu objetivo é conversar de forma natural, amigável e útil, transformando dados em insights claros e práticos.
 
-IMPORTANTE: Analise CUIDADOSAMENTE o que o usuário está perguntando:
-- Se pergunta sobre "MAIS/MAIOR/MÁXIMO" → responda sobre a categoria com MAIS reclamações
-- Se pergunta sobre "MENOS/MENOR/MÍNIMO" → responda sobre a categoria com MENOS reclamações
-- Seja PRECISO com os dados fornecidos
+🔹 ESTILO DE COMUNICAÇÃO
+- Seja conversacional e fluido, evitando parecer um manual técnico.
+- Traga explicações como se fosse uma pessoa próxima ajudando, não um robô.
+- Use linguagem clara, frases corridas e só use listas curtas quando realmente organizar melhor a informação.
+- Pode usar emojis com moderação para dar leveza.
+- Sempre ofereça próximos passos: "Quer que eu detalhe isso em relatório?", "Prefere que eu envie por e-mail?", "Posso mostrar os dados em gráfico, se quiser."
 
-RESPONDA APENAS o que foi perguntado de forma BREVE e NATURAL.
+🔹 O QUE VOCÊ CONSEGUE FAZER
+1. **Situação geral**
+   - Resumir o panorama atual das reclamações.
+   - Mostrar taxa de resolução, principais categorias, evolução ao longo do tempo.
 
-Se for uma saudação simples, responda amigavelmente e pergunte como pode ajudar.
+2. **Categorias**
+   - Identificar categorias mais críticas ou com menos problemas.
+   - Comparar categorias (ex: Cartão vs App).
+   - Explicar tendências em categorias específicas.
 
-NÃO gere relatórios automáticos a menos que seja especificamente solicitado.
+3. **Status das reclamações**
+   - Quantas foram resolvidas, pendentes, não respondidas.
+   - Calcular taxa de resolução geral e por categoria.
+   - Indicar onde estão os gargalos.
 
-Seja conversacional, direto e ATENTO aos detalhes da pergunta.
+4. **Tendências e padrões**
+   - Mostrar evolução das reclamações ao longo do tempo.
+   - Identificar picos, sazonalidades ou quedas.
+   - Destacar mudanças recentes que merecem atenção.
+
+5. **Recomendações**
+   - Sugerir ações práticas de melhoria (atendimento, processos, canais).
+   - Propor metas realistas para aumentar a taxa de resolução.
+   - Apontar oportunidades de aprendizado com categorias que já têm bons resultados.
+
+6. **Relatórios**
+   - Gerar relatório em PDF com gráficos e análises detalhadas.
+   - Enviar relatório por e-mail, se solicitado.
+
+🔹 COMO RESPONDER
+- Quando pedirem situação geral → traga um resumo narrativo dos dados.
+- Quando perguntarem por categorias → explique a mais problemática e a mais tranquila, de forma comparativa.
+- Quando pedirem melhorias → sugira ações simples primeiro, depois estratégias mais avançadas.
+- Quando falarem em relatório ou PDF → explique que pode gerar e/ou enviar por e-mail.
+- Quando perguntarem “o que você pode fazer” → liste as principais capacidades de forma curta e simpática.
+- Se não houver dados carregados → explique que precisa analisar primeiro e oriente o usuário.
+
+🔹 TONS DE RESPOSTA (exemplos)
+- Saudação: "Oi! 👋 Tudo bem? Posso te mostrar como estão as reclamações do Sicredi no Reclame Aqui ou preparar uma análise mais detalhada."
+- Situação geral: "No momento temos X reclamações registradas. A categoria que mais preocupa é Y, enquanto Z é a mais tranquila. A taxa de resolução está em W%."
+- Categoria: "A categoria mais crítica é Cartão, com N casos, já a de menor incidência é PIX, com apenas M."
+- Melhoria: "Um bom caminho seria focar primeiro nos casos pendentes de Cartão, revisar o processo de atendimento e criar uma força-tarefa rápida. Quer que eu detalhe isso em um relatório?"
+- Relatório: "Posso gerar um relatório completo com gráficos e insights. Quer que eu crie em PDF ou prefira que eu envie direto para o seu e-mail?"
+
+Lembre-se: sempre soe como um analista próximo e colaborativo, e não como um chatbot genérico.
 """
         
         context = ""
@@ -116,19 +157,13 @@ def get_rule_based_response(user_message, context_data=None):
     
     # Saudações
     if any(word in msg_lower for word in ['oi', 'olá', 'hello', 'bom dia', 'boa tarde']):
-        return "Olá! Sou o agente de análise de reclamações do Sicredi. Posso ajudar com:\n• Análise de dados de reclamações\n• Insights sobre categorias problemáticas\n• Geração de relatórios\n\nO que gostaria de saber?"
+        return "Olá! Sou o agente de análise de reclamações do Sicredi. Posso ajudar com:\n\n📊 CONSULTAS:\n• Situação atual das reclamações\n• Categorias mais problemáticas\n• Status de resolução\n\n💡 ANÁLISES:\n• Insights e recomendações\n• Comparações entre categorias\n• Tendências e padrões\n\n📋 RELATÓRIOS:\n• Gerar análise completa em PDF\n• Enviar relatórios por email\n\nO que gostaria de saber?"
     
-    # Perguntas sobre situação atual
-    if any(word in msg_lower for word in ['situação', 'status', 'como está']):
-        if context_data:
-            total = context_data.get('total_reclamacoes', 0)
-            categorias = len(context_data.get('categorias', {}))
-            status_data = context_data.get('status', {})
-            resolvidos = status_data.get('Resolvido', {}).get('count', 0) if status_data else 0
-            taxa_resolucao = (resolvidos / total * 100) if total > 0 else 0
-            
-            return f"📊 SITUAÇÃO ATUAL:\n• Total de reclamações: {total}\n• Categorias identificadas: {categorias}\n• Taxa de resolução: {taxa_resolucao:.1f}%\n• Status: {'CRÍTICO' if taxa_resolucao < 50 else 'ATENÇÃO' if taxa_resolucao < 70 else 'BOM'}\n"
-        return "Para ver a situação atual, preciso analisar os dados. Digite 'analisar reclamações'."
+    # Resposta padrão
+    if context_data:
+        total = context_data.get('total_reclamacoes', 0)
+        return f"🤖 Tenho {total} reclamações analisadas. Posso ajudar com:\n\n📊 CONSULTAS RÁPIDAS:\n• 'Situação atual' - Resumo geral\n• 'Categoria crítica' - Maior problema\n• 'Taxa de resolução' - Status atual\n\n💡 ANÁLISES AVANÇADAS:\n• 'Como melhorar?' - Recomendações\n• 'Gerar relatório' - PDF completo\n• 'Enviar para email@exemplo.com' - Relatório por email\n\nQual informação precisa?"
+    return "🤖 Sistema de análise de reclamações. Digite 'analisar reclamações' para carregar os dados e começar a análise."
     
     # Perguntas sobre categorias - mais inteligente
     if any(word in msg_lower for word in ['categoria', 'tipo', 'problema']):
@@ -182,16 +217,47 @@ def get_rule_based_response(user_message, context_data=None):
         
         return "Para ver o status das reclamações, digite 'analisar reclamações' para carregar os dados."
     
+    # Perguntas sobre funcionalidades
+    if any(word in msg_lower for word in ['funcionalidade', 'função', 'fazer', 'pode', 'ajuda', 'sistema', 'usar']):
+        if context_data:
+            total = context_data.get('total_reclamacoes', 0)
+            return f"🤖 SISTEMA DE ANÁLISE DE RECLAMAÇÕES SICREDI\n\n📊 DADOS DISPONÍVEIS:\n• {total} reclamações analisadas\n• Múltiplas categorias (App, Cartão, PIX, etc.)\n• Status de resolução detalhado\n\n🔍 O QUE POSSO FAZER:\n• Consultar situação atual\n• Identificar categorias críticas\n• Sugerir melhorias\n• Gerar relatórios PDF\n• Enviar análises por email\n\n💬 EXEMPLOS DE PERGUNTAS:\n• 'Qual a situação atual?'\n• 'Categoria mais problemática?'\n• 'Como melhorar o atendimento?'\n• 'Gerar relatório completo'\n\nO que gostaria de saber?"
+        return "🤖 Sistema de análise de reclamações do Sicredi. Digite 'analisar reclamações' para carregar os dados e ver todas as funcionalidades disponíveis."
+    
+    # Perguntas sobre situação atual
+    if any(word in msg_lower for word in ['situação', 'status', 'como está', 'resumo', 'geral']):
+        if context_data:
+            total = context_data.get('total_reclamacoes', 0)
+            categorias = len(context_data.get('categorias', {}))
+            status_data = context_data.get('status', {})
+            resolvidos = status_data.get('Resolvido', {}).get('count', 0) if status_data else 0
+            taxa_resolucao = (resolvidos / total * 100) if total > 0 else 0
+            
+            # Categoria mais crítica
+            cats = context_data.get('categorias', {})
+            categoria_critica = max(cats.items(), key=lambda x: x[1]['count'])[0] if cats else 'N/A'
+            
+            status_icon = '🔴' if taxa_resolucao < 50 else '🟡' if taxa_resolucao < 70 else '🟢'
+            
+            return f"📊 SITUAÇÃO ATUAL DAS RECLAMAÇÕES:\n\n📈 NÚMEROS GERAIS:\n• Total: {total} reclamações\n• Categorias: {categorias} diferentes\n• Mais crítica: {categoria_critica}\n\n{status_icon} RESOLUÇÃO:\n• Taxa atual: {taxa_resolucao:.1f}%\n• Status: {'CRÍTICO - Ação urgente!' if taxa_resolucao < 50 else 'ATENÇÃO - Melhorias necessárias' if taxa_resolucao < 70 else 'BOM - Dentro do esperado'}\n\n💡 PRÓXIMOS PASSOS:\n• 'Como melhorar?' - Recomendações\n• 'Gerar relatório' - Análise completa\n• 'Categoria crítica' - Detalhes do maior problema"
+        return "Para ver a situação atual, preciso analisar os dados. Digite 'analisar reclamações'."
+    
     # Perguntas sobre melhorias
-    if any(word in msg_lower for word in ['melhorar', 'resolver', 'solução', 'como']):
-        return "💡 RECOMENDAÇÕES ESTRATÉGICAS:\n\n1. PRIORIZAR RESOLUÇÃO:\n   • Focar nos casos não resolvidos (65%)\n   • Implementar follow-up automático\n\n2. MELHORAR ATENDIMENTO:\n   • Treinamento específico por categoria\n   • Reduzir tempo de resposta\n\n3. AÇÕES IMEDIATAS:\n   • Revisar processo de cartão\n   • Otimizar funcionalidades do app\n   • Automatizar respostas PIX\n\nQuer relatório completo?"
+    if any(word in msg_lower for word in ['melhorar', 'resolver', 'solução', 'como', 'recomendação', 'sugestão']):
+        if context_data:
+            status_data = context_data.get('status', {})
+            cats = context_data.get('categorias', {})
+            categoria_critica = max(cats.items(), key=lambda x: x[1]['count'])[0] if cats else 'App'
+            nao_resolvidos = sum(dados['count'] for status, dados in status_data.items() if status != 'Resolvido')
+            
+            return f"💡 RECOMENDAÇÕES ESTRATÉGICAS:\n\n🚨 AÇÕES IMEDIATAS:\n• Resolver {nao_resolvidos} casos pendentes\n• Força-tarefa para categoria {categoria_critica}\n• SLA de 48h para novas reclamações\n\n🔧 MELHORIAS DE PROCESSO:\n• Revisar fluxo de {categoria_critica.lower()}\n• Treinamento específico da equipe\n• Automatizar respostas padrão\n\n📊 MONITORAMENTO:\n• Dashboard em tempo real\n• Alertas automáticos\n• Relatórios semanais\n\n🎯 META: Elevar resolução para >80% em 30 dias\n\nQuer o plano detalhado em PDF?"
+        return "💡 Para recomendações específicas, preciso analisar os dados primeiro. Digite 'analisar reclamações'."
     
     # Comandos de análise
-    if any(word in msg_lower for word in ['analisar', 'relatório', 'gerar']):
-        return "📋 Para gerar análise completa, o sistema irá:\n• Processar todos os dados\n• Calcular métricas importantes\n• Gerar gráficos e insights\n• Criar relatório PDF\n\nConfirma a análise? (Digite 'sim' ou use o comando direto)"
+    if any(word in msg_lower for word in ['analisar', 'relatório', 'gerar', 'pdf', 'completo']):
+        return "📋 ANÁLISE COMPLETA DISPONÍVEL:\n\n🔍 O QUE SERÁ GERADO:\n• Estatísticas detalhadas por categoria\n• Gráficos de distribuição\n• Análise de tendências temporais\n• Insights estratégicos com IA\n• Recomendações de melhoria\n• Relatório PDF profissional\n\n⚡ OPÇÕES:\n• 'Gerar relatório' - PDF local\n• 'Enviar para email@exemplo.com' - PDF por email\n• 'Análise rápida' - Apenas insights\n\nQual opção prefere?"
     
-    # Resposta padrão
-    return "🤖 Sou especialista em análise de reclamações. Posso ajudar com:\n\n• 📊 Situação atual das reclamações\n• 🎯 Categorias mais problemáticas\n• 📋 Geração de relatórios completos\n\nO que gostaria de saber especificamente?"
+
 
 @app.entrypoint
 def invoke(payload):
