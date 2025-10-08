@@ -144,8 +144,76 @@ def get_rule_based_response(user_message, context_data=None):
 • "Principais gargalos"
 
 O que você gostaria de saber?"""
+
+    # Perguntas específicas sobre situação/status
+    if any(word in msg_lower for word in ['situação', 'status', 'como estão', 'situação atual', 'qual a situação']):
+        if context_data and context_data.get('status'):
+            status_data = context_data['status']
+            total = context_data.get('total_reclamacoes', 0)
+            resolvidas = status_data.get('Resolvido', {}).get('count', 0)
+            taxa = (resolvidas / total * 100) if total > 0 else 0
+            
+            return f"""📊 SITUAÇÃO ATUAL DAS RECLAMAÇÕES:
+
+📈 **NÚMEROS GERAIS:**
+• Total de reclamações: {total}
+• Resolvidas: {resolvidas} ({taxa:.1f}%)
+• Pendentes: {total - resolvidas}
+
+📋 **STATUS DETALHADO:**
+{chr(10).join([f'• {status}: {data.get("count", 0)} casos' for status, data in status_data.items()])}
+
+{'🚨 **ALERTA:** Taxa de resolução muito baixa!' if taxa < 50 else '✅ **BOM:** Taxa de resolução adequada!'} 
+
+O que mais você gostaria saber?"""
+        
+    # Perguntas sobre categorias problemáticas
+    if any(word in msg_lower for word in ['categoria', 'problemática', 'mais reclamações', 'quais categorias', 'categorias mais']):
+        if context_data and context_data.get('categorias'):
+            categorias = context_data['categorias']
+            # Ordenar por quantidade de reclamações
+            sorted_cats = sorted(categorias.items(), key=lambda x: x[1].get('count', 0), reverse=True)
+            
+            result = "🎯 CATEGORIAS MAIS PROBLEMÁTICAS:\n\n"
+            for i, (cat, data) in enumerate(sorted_cats[:5]):
+                emoji = "🔴" if i == 0 else "🟡" if i < 3 else "🟢"
+                result += f"{emoji} **{cat}:** {data.get('count', 0)} reclamações\n"
+            
+            if sorted_cats:
+                worst = sorted_cats[0]
+                result += f"\n⚠️ **FOCO PRIORITÁRIO:** {worst[0]} precisa de atenção urgente!"
+            
+            result += "\n\nPrecisa de análise mais detalhada de alguma categoria?"
+            return result
     
-    # Resposta padrão
+    # Perguntas sobre melhorias/recomendações
+    if any(word in msg_lower for word in ['melhoria', 'recomendação', 'como melhorar', 'sugestão', 'plano', 'ação']):
+        if context_data:
+            return """💡 RECOMENDAÇÕES DE MELHORIA:
+
+🎯 **AÇÕES IMEDIATAS:**
+• Priorizar resolução de casos pendentes
+• Implementar sistema de follow-up automático
+• Criar SLA de 48h para primeira resposta
+
+📊 **MELHORIAS DE PROCESSO:**
+• Capacitar equipe nas categorias mais críticas
+• Implementar chatbot para dúvidas simples
+• Criar FAQ baseado em reclamações recorrentes
+
+📈 **MONITORAMENTO:**
+• Dashboard em tempo real
+• Alertas automáticos para casos críticos
+• Relatórios semanais de performance
+
+🚀 **METAS:**
+• Taxa de resolução >80% em 30 dias
+• Tempo médio de resposta <24h
+• Satisfação do cliente >4.5/5
+
+Quer que eu gere um relatório detalhado com plano de ação específico?"""
+        
+    # Resposta padrão apenas se não foi uma pergunta específica
     if context_data:
         total = context_data.get('total_reclamacoes', 0)
         return f"Tenho {total} reclamações analisadas. Posso te ajudar com situação atual, categorias problemáticas, recomendações de melhoria ou gerar relatórios. O que você gostaria de saber?"
