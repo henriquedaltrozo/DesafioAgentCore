@@ -159,12 +159,6 @@ def get_rule_based_response(user_message, context_data=None):
     if any(word in msg_lower for word in ['oi', 'olá', 'hello', 'bom dia', 'boa tarde']):
         return "Olá! Sou o agente de análise de reclamações do Sicredi. Posso ajudar com:\n\n📊 CONSULTAS:\n• Situação atual das reclamações\n• Categorias mais problemáticas\n• Status de resolução\n\n💡 ANÁLISES:\n• Insights e recomendações\n• Comparações entre categorias\n• Tendências e padrões\n\n📋 RELATÓRIOS:\n• Gerar análise completa em PDF\n• Enviar relatórios por email\n\nO que gostaria de saber?"
     
-    # Resposta padrão
-    if context_data:
-        total = context_data.get('total_reclamacoes', 0)
-        return f"🤖 Tenho {total} reclamações analisadas. Posso ajudar com:\n\n📊 CONSULTAS RÁPIDAS:\n• 'Situação atual' - Resumo geral\n• 'Categoria crítica' - Maior problema\n• 'Taxa de resolução' - Status atual\n\n💡 ANÁLISES AVANÇADAS:\n• 'Como melhorar?' - Recomendações\n• 'Gerar relatório' - PDF completo\n• 'Enviar para email@exemplo.com' - Relatório por email\n\nQual informação precisa?"
-    return "🤖 Sistema de análise de reclamações. Digite 'analisar reclamações' para carregar os dados e começar a análise."
-    
     # Perguntas sobre categorias - mais inteligente
     if any(word in msg_lower for word in ['categoria', 'tipo', 'problema']):
         if context_data and 'categorias' in context_data:
@@ -256,6 +250,12 @@ def get_rule_based_response(user_message, context_data=None):
     # Comandos de análise
     if any(word in msg_lower for word in ['analisar', 'relatório', 'gerar', 'pdf', 'completo']):
         return "📋 ANÁLISE COMPLETA DISPONÍVEL:\n\n🔍 O QUE SERÁ GERADO:\n• Estatísticas detalhadas por categoria\n• Gráficos de distribuição\n• Análise de tendências temporais\n• Insights estratégicos com IA\n• Recomendações de melhoria\n• Relatório PDF profissional\n\n⚡ OPÇÕES:\n• 'Gerar relatório' - PDF local\n• 'Enviar para email@exemplo.com' - PDF por email\n• 'Análise rápida' - Apenas insights\n\nQual opção prefere?"
+    
+    # Resposta padrão (fallback) - deve ficar no final
+    if context_data:
+        total = context_data.get('total_reclamacoes', 0)
+        return f"🤖 Tenho {total} reclamações analisadas. Posso ajudar com:\n\n📊 CONSULTAS RÁPIDAS:\n• 'Situação atual' - Resumo geral\n• 'Categoria crítica' - Maior problema\n• 'Taxa de resolução' - Status atual\n\n💡 ANÁLISES AVANÇADAS:\n• 'Como melhorar?' - Recomendações\n• 'Gerar relatório' - PDF completo\n• 'Enviar para email@exemplo.com' - Relatório por email\n\nQual informação precisa?"
+    return "🤖 Sistema de análise de reclamações. Digite 'analisar reclamações' para carregar os dados e começar a análise."
     
 
 
